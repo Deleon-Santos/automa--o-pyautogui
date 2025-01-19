@@ -1,0 +1,2 @@
+Hello! World!! Olá rede!
+Estou testando minha nova aplicação com  #pyautogui que será responsável por publicar minhas atualizações aqui na plataforma.
