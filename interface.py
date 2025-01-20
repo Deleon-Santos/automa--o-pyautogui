@@ -1,48 +1,54 @@
 import customtkinter as ctk
-from tkinter import filedialog ,StringVar
+from tkinter import filedialog ,StringVar,Tk
+import automacao_linkedin as auto
 
 # Inicialização da interface
-ctk.set_appearance_mode("dark")  # Define o modo de aparência (claro ou escuro)
-ctk.set_default_color_theme("green")  # Define o tema de cores padrão
+ctk.set_appearance_mode("dark")  
+ctk.set_default_color_theme("green")  
 
 app = ctk.CTk()
-app.geometry("400x300")
+app.geometry("550x300")
 app.title("Minha Interface")
 
-# Criando os elementos da interface
+
+# buscando os arquivos
 def selecionar_arquivo():
-    
-   
-        # Abrir um diálogo para selecionar o arquivo
-        caminho = filedialog.askopenfilename(title="Selecione um arquivo")
-        if caminho:  # Verifica se algum arquivo foi selecionado
-            arquivo.set(caminho)  # Atualiza a variável do campo "arquivo"
-        desc = descricao.get()  # Obtém o texto do campo "descrição"
-        print(desc, caminho)  # Passa os valores para a função externa
+    caminho = filedialog.askopenfilename(title="Selecione um arquivo")# Abrir um diálogo para selecionar o arquivo
+    if caminho:  
+        arquivo.set(caminho)  # Atualiza a variável do campo "arquivo"
+
+#iniciando a publicação        
 def publicar():
+    
+    
+    desc = entry_campo1.get(0.0,END)  # Obtém o texto do campo "descrição"
+    caminho = arquivo.get()
+    barra_final_indice = caminho.rfind('/')#pega o indice da ultima barra
+    caminho_formatado = caminho[barra_final_indice:]#fatia a partir  do indice da ultima barra
+    print(f"publicado {desc,caminho_formatado}")
+
+    auto.automatizar(desc, caminho_formatado)
+
       
-descricao = StringVar()
+#
+
 arquivo = StringVar()
+label_title =ctk.CTkLabel(master=app, text='ATUALIZAÇÕES AUTOMATIZADAS-LINKEDIN',font=('Ariel bold',20)).place(x=60,y=40)
 
 label_descricao1 = ctk.CTkLabel(master=app, text="texto descritivo:").place(x=60, y=90)
 
-entry_campo1 = ctk.CTkEntry(master=app, textvariable=descricao).place(x=60, y=120)
+entry_campo1 = ctk.CTkTextbox(master=app, width=420, height=70)
+entry_campo1.place(x=60, y=120) 
 
-label_diretorio = ctk.CTkLabel(master=app, text="Diretorio:").place(x=60,y=150)
+label_diretorio = ctk.CTkLabel(master=app, text="Diretorio:").place(x=60,y=190)
 
-entry_diretorio = ctk.CTkEntry(master=app, textvariable=arquivo).place(x=60,y=180)
+entry_diretorio = ctk.CTkEntry(master=app, textvariable=arquivo, width=350).place(x=60,y=220)
+  
+botao_diretorio = ctk.CTkButton(master=app, text="Imagem", width=60, command=selecionar_arquivo)
+botao_diretorio.place(x=420,y=220)
 
-
-# ... outros campos de descrição e entry ...
-
-# Botão para buscar diretório
-
-
-    
-botao_diretorio = ctk.CTkButton(master=app, text="Imagem", command=selecionar_arquivo)
-botao_diretorio.place(x=200,y=180)
 botao_publicar = ctk.CTkButton(master=app, text="Publicar", command=publicar)
-botao_diretorio.place(x=200,y=180)
+botao_publicar.place(x=200,y=260)
 
 
 app.mainloop()
