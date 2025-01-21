@@ -1,5 +1,5 @@
 import customtkinter as ctk
-from tkinter import filedialog ,StringVar,Tk
+from tkinter import filedialog ,StringVar
 import automacao_linkedin as auto
 
 
