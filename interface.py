@@ -2,9 +2,11 @@ import customtkinter as ctk
 from tkinter import filedialog ,StringVar,Tk
 import automacao_linkedin as auto
 
+
 # Inicialização da interface
 ctk.set_appearance_mode("dark")  
 ctk.set_default_color_theme("green")  
+
 
 app = ctk.CTk()
 app.geometry("550x300")
@@ -16,23 +18,21 @@ def selecionar_arquivo():
     caminho = filedialog.askopenfilename(title="Selecione um arquivo")# Abrir um diálogo para selecionar o arquivo
     if caminho:  
         arquivo.set(caminho)  # Atualiza a variável do campo "arquivo"
+   
 
 #iniciando a publicação        
 def publicar():
-    
-    
-    desc = entry_campo1.get(0.0,END)  # Obtém o texto do campo "descrição"
+    desc =  entry_campo1.get("1.0", "end") # Obtém o texto do campo "descrição"
     caminho = arquivo.get()
     barra_final_indice = caminho.rfind('/')#pega o indice da ultima barra
-    caminho_formatado = caminho[barra_final_indice:]#fatia a partir  do indice da ultima barra
+    caminho_formatado = caminho[barra_final_indice +1 :]#fatia a partir  do indice da ultima barra
     print(f"publicado {desc,caminho_formatado}")
 
     auto.automatizar(desc, caminho_formatado)
 
-      
-#
 
 arquivo = StringVar()
+
 label_title =ctk.CTkLabel(master=app, text='ATUALIZAÇÕES AUTOMATIZADAS-LINKEDIN',font=('Ariel bold',20)).place(x=60,y=40)
 
 label_descricao1 = ctk.CTkLabel(master=app, text="texto descritivo:").place(x=60, y=90)
