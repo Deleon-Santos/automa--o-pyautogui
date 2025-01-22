@@ -22,14 +22,15 @@ Este software desenvolvido em Python com a biblioteca CustomTkinter, e pyautogui
 
 ### Limitações e Melhorias Futuras
 * **Limitações:**
-    * Dependência de coordenadas fixas no LinkedIn a aplicação pode falhar dependendo da resolução atual da tela(recomendavel 1920x1080).
+    * Utiliza o Position.py para marcar os pontos de click do mouse em resoluções diferentes da recomendada. 
+    * Dependência de coordenadas fixas no LinkedIn a aplicação pode falhar dependendo da resolução atual da tela(recomendavel. 1920x1080).
     
-* **Melhorias:**
+* **Melhorias que podem ser implementadas:**
     * Detecção dinâmica de elementos no LinkedIn.
     * Suporte a mais formatos de arquivo.
     
 ### Arquitetura do Sistema
-Estrutura modurar.
+Aplicação com estrutura modular.
 
 
 * Implementar [melhoria 1]

@@ -6,7 +6,7 @@ pa.PAUSE=1
 link='https://www.linkedin.com/feed/'
 
 #abrir o navegador
-def automatizar(text, caminho):    
+def automatizar(text, caminho):
     pa.press("win")
     pa.write('google')
     pa.press('enter')
@@ -38,3 +38,4 @@ def automatizar(text, caminho):
     pa.click(x=1631, y=903)
     time.sleep(1)
     pa.click(x=1340, y=956)
+
